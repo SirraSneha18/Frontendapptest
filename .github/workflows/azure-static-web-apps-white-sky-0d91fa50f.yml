@@ -19,6 +19,7 @@ jobs:
         run: |
           curl -sL https://deb.nodesource.com/setup_20.x | sudo -E bash -
           sudo apt-get install -y nodejs
+          export PATH="/usr/bin:$PATH"  # Assuming Node.js is installed in /usr/bin
 
       - uses: actions/checkout@v3
         with:
