@@ -15,11 +15,15 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - name: Install Node.js
+      - name: Download Node.js
         run: |
-          curl -sL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-          sudo apt-get install -y nodejs
-          export PATH="/usr/bin:$PATH"  # Assuming Node.js is installed in /usr/bin
+          curl -sL https://nodejs.org/dist/v20.11.1/node-v20.11.1-linux-x64.tar.gz | sudo tar -xz -C /usr/local --strip-components=1
+
+      - name: Set Node.js Version
+        run: |
+          export PATH="/usr/local/bin:$PATH"
+          node --version
+          npm --version
 
       - uses: actions/checkout@v3
         with:
